@@ -2,5 +2,10 @@
     <qresource prefix="/">
         <file>main.qml</file>
     </qresource>
-    <qresource prefix="/icons"/>
+    <qresource prefix="/icons">
+        <file>resources/icons/browse_icon.png</file>
+        <file>resources/icons/decrypt_icon.png</file>
+        <file>resources/icons/encrypt_icon.png</file>
+        <file>resources/icons/save_icon.png</file>
+    </qresource>
 </RCC>
