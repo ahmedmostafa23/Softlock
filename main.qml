@@ -1,6 +1,7 @@
 import QtQuick 2.11
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.14
+import softlock.encryption 1.0
 
 Window {
     id: root
@@ -8,6 +9,10 @@ Window {
     height: 480
     visible: true
     title: qsTr("Softlock Encryption")
+
+    BackEnd {
+        id: cpp_backend
+    }
 
     Image {
         id: softlock_logo
@@ -91,6 +96,7 @@ Window {
                     anchors.verticalCenter: parent.verticalCenter
                 }
             }
+
         }
         Button {
             id: encrypt_button
@@ -138,6 +144,10 @@ Window {
                     color: "white"
                     anchors.verticalCenter: parent.verticalCenter
                 }
+            }
+
+            onClicked: {
+                cpp_backend.open_file()
             }
         }
         Button {

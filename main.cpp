@@ -1,11 +1,15 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <BackEnd.h>
 
 int main(int argc, char *argv[])
 {
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
+
+    qmlRegisterType<BackEnd>("softlock.encryption", 1, 0,"BackEnd");
+
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
