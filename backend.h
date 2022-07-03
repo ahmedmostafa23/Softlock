@@ -25,16 +25,14 @@ signals:
     void file_not_open(QVariant operation);
     void encryption_complete(QVariant encrypted_msg);
     void decryption_complete(QVariant decrypted_msg);
+    void saving_complete();
 
 
 public slots:
     void open_file();
-    void encrypt(QString aes_algorithm);
+    void encrypt(QVariant aes_algorithm);
     void decrypt();
-
-    void save_file() {
-
-    }
+    void save_file(const std::string& text);
 
 
 };

@@ -48,11 +48,11 @@ else()
     endif()
 endif()
 
+target_link_libraries(Softlock PUBLIC ${AESLib})
 target_compile_definitions(Softlock
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(Softlock
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
-target_link_libraries(Softlock PUBLIC ${AESLib})
 
 set_target_properties(Softlock PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

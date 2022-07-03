@@ -15,6 +15,7 @@ Window {
         spacing: 5
         anchors.bottom: buttons_grid.top
         property string aes_algorithm: "AES"
+        property string encrypted_msg: ""
 
         RadioButton {
             id: aes
@@ -131,6 +132,10 @@ Window {
                 }
             }
 
+            onClicked: {
+                cpp_backend.open_file()
+            }
+
         }
         Button {
             id: encrypt_button
@@ -181,7 +186,7 @@ Window {
             }
 
             onClicked: {
-                cpp_backend.open_file()
+                encrypted_message = cpp_backend.encrypt(radio_buttons_choice.aes_algorithm)
             }
         }
         Button {
@@ -278,6 +283,10 @@ Window {
                     color: "white"
                     anchors.verticalCenter: parent.verticalCenter
                 }
+            }
+
+            onClicked: {
+                cpp_backend.save_file(encrypted_message)
             }
         }
     }

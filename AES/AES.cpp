@@ -62,6 +62,7 @@ std::string AES::cipher(const std::string& message) {
     // storing the encrypted message in a class attribute
     encrypted = ciphertext;
 
+    // casts from unsigned char (the type required by the C library, to a char that can be stored in a normal std::string)
     return std::string(reinterpret_cast<char*>(encrypted.data()));
 }
 
@@ -89,6 +90,7 @@ int AES::print_readable_cipher() {
 
 void AES::handleErrors(void)
 {
+    // aborts and prints the error if there is any.
     ERR_print_errors_fp(stderr);
     abort();
 }
@@ -112,6 +114,9 @@ int AES::encrypt(unsigned char *plaintext, int plaintext_len, unsigned char *key
      * IV size for *most* modes is the same as the block size. For AES this
      * is 128 bits
      */
+
+    /* this part is going to check for the encryption algorithm chosen by the user, and provide the suitable argument
+    to the initializer function */
 
     decltype(EVP_aes_128_ecb()) aes_argument;
 
