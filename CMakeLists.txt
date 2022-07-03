@@ -16,10 +16,13 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Widgets)
 
 include_directories(${Qt5Widgets_INCLUDE_DIRS})
 
+include_directories(AES)
+include_directories(external/openSSL/include)
+
 set(PROJECT_SOURCES
+        backend.cpp
         main.cpp
         qml.qrc
-        backend.cpp
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
@@ -49,6 +52,7 @@ target_compile_definitions(Softlock
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(Softlock
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
+target_link_libraries(Softlock PUBLIC ${AESLib})
 
 set_target_properties(Softlock PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com

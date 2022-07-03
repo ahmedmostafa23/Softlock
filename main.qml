@@ -10,6 +10,39 @@ Window {
     visible: true
     title: qsTr("Softlock Encryption")
 
+    Row {
+        id: radio_buttons_choice
+        spacing: 5
+        anchors.bottom: buttons_grid.top
+        property string aes_algorithm: "AES"
+
+        RadioButton {
+            id: aes
+            text: qsTr("AES")
+
+            onClicked: {
+                aes_algorithm = "AES"
+            }
+        }
+        RadioButton {
+            id: aes_256
+            text: qsTr("AES_256")
+
+            onClicked: {
+                aes_algorithm = "AES_256"
+            }
+        }
+        RadioButton {
+            id: aes_cbc
+            text: qsTr("AES_CBC")
+
+            onClicked: {
+                aes_algorithm = "AES_CBC"
+            }
+        }
+    }
+
+
     BackEnd {
         id: cpp_backend
     }
@@ -48,6 +81,7 @@ Window {
         anchors.centerIn: parent
         rows: 2
         columns: 2
+        transform: Translate{y: -100}
 
         Button {
             id: browse_button
